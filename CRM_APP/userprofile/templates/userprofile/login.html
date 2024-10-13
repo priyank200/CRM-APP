@@ -1,0 +1,19 @@
+{% extends "core/base.html" %}
+
+{% block title %}CRM-App | Log in{% endblock %}
+
+{% block content %} 
+
+    
+    <h1 class="py-3 font-bold text-xl">Hello user, You are on Log In page</h1>
+    <form method="post" action=".">
+        {% csrf_token %}
+        {{form.as_p}}
+
+        <button class="py-3 px-4 bg-teal-500 rounded-xl text-white">Submit</button>
+
+    </form>
+
+
+
+{% endblock %}

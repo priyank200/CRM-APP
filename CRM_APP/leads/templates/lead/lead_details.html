@@ -1,0 +1,35 @@
+{% extends "core/base.html" %}
+
+{% block title %}CRM-App | Lead Details {% endblock %}
+
+{% block content %} 
+    <div class = "py-6 px-8">
+        <h1 class = "mb-4 text-xl font-bold">{{ lead.name }} | Lead Details</h1>
+        
+        {% if lead.description %}
+            <p class = " font-semibold">Description: </p>
+            <p class ="mb-2">{{lead.description}}</p>
+        {% endif %}
+
+        <p class = " font-semibold">Priority: </p>
+        <p class ="mb-2">{{lead.get_priority_display}}</p>
+
+        <p class = " font-semibold">Status: </p>
+        <p class ="mb-2">{{lead.get_status_display}}</p>
+
+        <p class = " font-semibold">Created At: </p>
+        <p class ="mb-2">{{lead.created_at }}</p>
+
+        <p class = " font-semibold">Last Modified At: </p>
+        <p class ="mb-6">{{lead.updated_at}}</p>
+
+        
+        <hr class = "my-4">
+            <a class = "py-2 px-4 rounded-xl text-white bg-teal-500 hover:bg-teal-700 transition" href = "{% url 'edit-lead' lead.id %}">Edit Lead</a>
+            <a class = "py-2 px-4 rounded-xl text-white bg-red-500 hover:bg-red-700 transition" href = "{% url 'delete-lead' lead.id %}">Delete Lead</a>
+        <hr class = "my-4">
+        
+
+        <a href = "{% url 'leads-list' %}">🔙Back to Leads</a>
+    </div>
+{% endblock %}

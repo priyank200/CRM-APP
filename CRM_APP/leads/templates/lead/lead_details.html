@@ -25,6 +25,7 @@
 
         
         <hr class = "my-4">
+            <a class = "py-2 px-4 rounded-xl text-white bg-blue-500 hover:bg-blue-700 transition" href = "{% url 'convert-to-client' lead.id %}">Convert to client</a>
             <a class = "py-2 px-4 rounded-xl text-white bg-teal-500 hover:bg-teal-700 transition" href = "{% url 'edit-lead' lead.id %}">Edit Lead</a>
             <a class = "py-2 px-4 rounded-xl text-white bg-red-500 hover:bg-red-700 transition" href = "{% url 'delete-lead' lead.id %}">Delete Lead</a>
         <hr class = "my-4">

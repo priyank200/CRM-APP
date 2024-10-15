@@ -4,6 +4,9 @@ from .forms import AddLeadForm
 from .models import Leads
 from django.contrib import messages
 
+# model of client
+from client.models import Client
+
 
 @login_required
 def leads_list(request):
@@ -71,3 +74,19 @@ def delete_lead(request,pk):
      lead.delete()
      messages.success(request,"Lead is successfully deleted")
      return redirect('leads-list')
+ 
+@login_required
+def convert_to_client(request, pk):
+    lead = get_object_or_404(Leads,created_by=request.user,pk=pk)
+    client = Client.objects.create(
+                    name = lead.name,
+                    email = lead.email,
+                    description=lead.description,
+                    created_by = request.user
+                    )
+    
+    lead.converted_to_client = True
+    lead.save()
+    messages.success(request,"Lead is successfully converted to client")
+    
+    return redirect('leads-list')

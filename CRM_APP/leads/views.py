@@ -10,7 +10,7 @@ from client.models import Client
 
 @login_required
 def leads_list(request):
-    leads = Leads.objects.filter(created_by=request.user)
+    leads = Leads.objects.filter(created_by=request.user).exclude(converted_to_client=True)
     
     return render(request,'lead/leads_list.html',{
         'leads':leads

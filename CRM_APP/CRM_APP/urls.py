@@ -23,8 +23,9 @@ from django.contrib.auth import views
 
 urlpatterns = [
     path("",index, name='index'),
-    path('add-lead/', include('leads.urls'), name='add-lead'),
+    path('dashboard/add-lead/', include('leads.urls'), name='add-lead'),
     path('dashboard/', include('dashboard.urls'), name='dashboard'),
+    path('dashboard/clients/', include('client.urls')),
     path("about/", about, name='about'),
     path('sign-up/', signup, name='sign-up'),
     path('log-in/', views.LoginView.as_view(template_name='userprofile/login.html'), name='log-in'),
